@@ -57,7 +57,7 @@
                     {{-- </span> --}}
                     <h3>{{ ucwords($jobvacancy->name) }}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic tenetur ea in accusantium est.</p>
-                    <a href="{{ route('jobvacancy.show', $jobvacancy->id) }}" class="btn btn-warning btn-sm">Details</a>
+                    <a href="{{ route('vacancy', $jobvacancy->id) }}" class="btn btn-warning btn-sm">Details</a>
                   </div>
                 </div>
 
@@ -93,18 +93,18 @@
     </div>
 
     <div class="author  d-lg-flex" id="about-section">
-      <div class="bg-img" style="background-image: url('images/author_1.jpg');"></div>
+      <div class="bg-img" style="background-image: url('http://www.prospera-perwira.com/img/about-img.jpg');"></div>
       <div class="text">
-        <h3>Hello It's Jane</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis qui voluptates illum harum minima accusantium praesentium eos aut ab. Voluptate nulla illum ullam maxime consequuntur labore qui delectus, omnis saepe.</p>
-        <p>Eos ratione repellat ea dignissimos iure ipsam sed dolore, excepturi id recusandae cumque sit, fugiat obcaecati necessitatibus nisi voluptate similique? Sed quae itaque nisi magnam amet aut maiores debitis temporibus.</p>
-        <p>Iste repellendus libero cumque facilis sint quas quis temporibus quia veritatis reiciendis obcaecati, magni, dolorum aspernatur laborum, est, sequi rerum! Perspiciatis facilis commodi libero ipsa minima reiciendis rerum, facere quaerat.</p>
+        <h3>Profil Prospera</h3>
+        <p>PT. Prospera Perwira Utama adalah perusahaan yang memberikan solusi di bidang Network Infrastructure melingkupi (Konvensional Server, Hyperconverge Server Storage, Storage, Firewall, Network Security, Netwowrk Monitoring, Switch, Computer) dan juga kami meberikan solusi di bidang piranti lunak (Sistem Aplikasi).</p>
+        <p>Kami telah berpengalaman lebih dari 5 tahun dalam mendistribusikan produk - produk kami yang berkualitas dan terjamin.</p>
+        <p>Kami juga telah berpengalaman dalam bekerja sama dengan HP, DELL, LENOVO, ASUS, Nutanix, CITRIX, PALO ALTO, JUPITER, BLUE CODE, Mellanox, ARRISTA, dll.</p>
+        <p>Kami berkomitmen untuk membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang dibutuhkan.</p>
 
-        div.social_
 
         <div class="mt-5">
-          <span class="d-block text-black mb-4">Jane Smith, <span class="text-muted">Book Author &amp; Publisher</span></span>
-        <img src="{{ asset('images/signature.png') }}" alt="Image" class="img-fluid w-25">
+          <span class="d-block text-black mb-4"><span class="text-muted"></span></span>
+        <img src=""class="img-fluid w-25">
         </div>
         
       </div>

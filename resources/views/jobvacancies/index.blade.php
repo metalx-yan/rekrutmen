@@ -52,7 +52,7 @@
 
                                     <div class="row">
                                         <div class="form-group col-md-4">
-                                            <label>Requirements</label>
+                                            <label>Persyaratan Pelamar</label>
                                             <div id="plusrec">
                                                 <input type="text" name="requirements[]" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="requirements" autocomplete="off">
                                                 <label>&nbsp;</label>
@@ -65,7 +65,7 @@
                                             <button type="button" id="addrec" name="add" class="btn btn-success">Add</button>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>Criterias</label>
+                                            <label>Kriteria</label>
                                             <div id="pluscri">
                                                 <input type="text" name="criterias[]" class="form-control {{ $errors->has('criterias') ? 'is-invalid' : ''}}" id="criterias" autocomplete="off">
                                                 <label>&nbsp;</label>

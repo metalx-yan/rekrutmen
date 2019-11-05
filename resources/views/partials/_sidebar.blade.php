@@ -21,10 +21,17 @@
                         <a class="" href="{{ route('home.admin') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
 
-                        
-                        <li class="nav-small-cap">EXTRA COMPONENTS</li>
-                    
-                    <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href=" {{ route('schedule.job') }} ">Jadwal Wawancara</a></li>
+                                <li><a href=" {{ route('applicant.index') }} ">Data Pelamar</a></li>
+                                <li><a href=" {{ route('jobvacancy.index') }} ">Lowongan Kerja</a></li>
+                                <li><a href=" {{ route('criteria.index') }} ">Kriteria</a></li>
+                                <li><a href=" {{ route('requirement.index') }} ">Persyaratan Pelamar</a></li>
+                            </ul>
+                        </li>
+                       
                     @endif
                     
                     
@@ -34,12 +41,9 @@
                         <a class="" href="{{ route('home.hrd') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                     </li>
 
-                        <li>
+                        {{-- <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Interview Schedules</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href=" {{ route('jobvacancy.index') }} ">Job Vacancies</a></li>
-                                <li><a href=" {{ route('criteria.index') }} ">Criterias</a></li>
-                                <li><a href=" {{ route('requirement.index') }} ">Requirements</a></li>
                                 <li><a href=" {{ route('schedule.job') }} ">Schedules</a></li>
                             </ul>
                         </li>
@@ -49,12 +53,12 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href=" ">List Candidates</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
                     
-                    <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
+                    {{-- <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
                     <li class="nav-small-cap">EXTRA COMPONENTS</li>
-                    
+                     --}}
                     @endif
                 </ul>
             </nav>

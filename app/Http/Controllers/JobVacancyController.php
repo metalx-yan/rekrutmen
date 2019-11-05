@@ -79,27 +79,19 @@ class JobVacancyController extends Controller
 
     public function scheduleStore(Request $request, $id)
     {
-        // dd($request);
         $request->validate([
             'interviewdate' => 'required|date',
             'interviewtime' => 'date_format:h:i',
             'room' => 'required|string',
         ]);
         
-        // foreach (JobVacancy::all() as $value) {
             $update = JobVacancy::findOrFail($id);
             $update->interviewdate = $request->interviewdate;
             $update->interviewtime = $request->interviewtime;
             $update->room = $request->room;
             $update->save();
             
-            // JobVacancy::create([
-            //     'interviewdate' => $request->interviewdate,
-            //     'interviewtime' => $request->interviewtime,
-            //     'room' => $request->room,
-            // ]);
-                
-        // }
+           
         return redirect()->back();
     }
 
@@ -110,6 +102,13 @@ class JobVacancyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        // $job = JobVacancy::find($id);
+
+        // return view('jobvacancies.show', compact('job'));
+    }
+
+    public function vacancy($id)
     {
         $job = JobVacancy::find($id);
 

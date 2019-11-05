@@ -16,10 +16,10 @@
   
                     <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
                       <li><a href="#beranda" class="nav-link">Beranda</a></li>
+                      <li><a href="#about-section" class="nav-link">Profil Perusahaan</a></li>
                       <li><a href="#lowongan-kerja" class="nav-link">Lowongan Kerja</a></li>
-                      <li><a href="#about-section" class="nav-link">About Author</a></li>
                       <li><a href="#testimonial-section" class="nav-link">Testimonial</a></li>
-                      <li><a href="{{ route('login') }}" class="nav-link">Login</a></li>
+                      <li><a href="#contact" class="nav-link">Kontak</a></li>
                     </ul>
                   </div>
                 </nav>
