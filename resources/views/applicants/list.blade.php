@@ -17,35 +17,36 @@
                
             </div>
             <div class="card-body">
-                <table class="table border" id="myTable" style="font-size:9px;" >
+                <table class="table border" id="myTable" style="font-size:14px;" >
                     <thead>
-                        <th>NIK</th>
                         <th>Nama</th>
-                        <th>Tempat Lahir</th>
                         <th>Tanggal Lahir</th>
                         <th>Telepon</th>
-                        <th>Jenis Kelamin</th>
                         <th>Status Pernikahan</th>
                         <th>Agama</th>
                         <th>Email</th>
-                        <th>Alamat</th>
-                        <th>Berkas Lamaran</th>
+                        <th>Nilai</th>
+                        <th>Penilaian</th>
                     </thead>
 
                     <tbody>
                         @foreach ($applicants as $applicant)
-                            <tr>
-                                <td> {{ $applicant->nik }} </td>
+                        <tr>
+                                {{-- {{ $applicant }} --}}
                                 <td> {{ $applicant->name }} </td>
-                                <td> {{ $applicant->place_of_birth }} </td>
                                 <td> {{ $applicant->date_of_birth->format('d-m-Y') }} </td>
                                 <td> {{ $applicant->telp }} </td>
                                 <td> {{ $applicant->gender == 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
-                                <td> {{ $applicant->status == 0 ? 'Belum Menikah' : 'Menikah' }} </td>
                                 <td> {{ $applicant->religion }} </td>
                                 <td> {{ $applicant->email }} </td>
-                                <td> {{ $applicant->address }} </td>
-                                <td> <a href=" {{ route('applicant.download', $applicant->id ) }} "> <button type="button" class="btn btn-info btn-sm">Download</button> </a> </td>
+                                <td> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
+                                {{-- <td> {{ $applicant->assessment->total != null ?  $applicant->assessment->total : ''}} </td> --}}
+                                <td> @if (is_null($applicant->assessment))
+                                        <a href="{{ route('list.app', $applicant->id) }}" class="btn btn-primary btn-sm">Enter</a>
+                                    @else
+                                        
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

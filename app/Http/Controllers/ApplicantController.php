@@ -45,9 +45,9 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeUser(Request $request)
     {
-        // dd($request);
+        // dd($request->all());
         $request->validate([
             'nik' => 'required|numeric|digits:16',
             'name' => 'required|string',
@@ -57,20 +57,13 @@ class ApplicantController extends Controller
             'telp' => 'required|string',
             'gender' => 'required',
             'status' => 'required',
+            'resume' => 'required',
             'religion' => 'required|string',
             'email' => 'required|string|unique:applicants',
             'job_vacancy_id' => 'required',
         ]);
 
         if ($request->hasFile('resume')) {
-
-            // dd($size);
-            $size = $request->file('resume')->getSize();
-
-            $uniqueFileName = uniqid() . $request->file('resume')->getClientOriginalName() . '.' . $request->file('resume')->getClientOriginalExtension() ;
-
-            $file  = $request->file('resume')->move(public_path() . '\files' , $uniqueFileName);
-
             Applicant::create([
                 'nik' => $request->nik,
                 'name' => $request->name,
@@ -82,16 +75,49 @@ class ApplicantController extends Controller
                 'status' => $request->status,
                 'religion' => $request->religion,
                 'email' => $request->email,
-                'resume' => $file ,
+                'resume' => $request->file('resume')->store('files'),
                 'job_vacancy_id' => $request->job_vacancy_id
             ]);
                 
         }
         
-        return redirect()->url('/');
+        return redirect('/');
         
     }
 
+    public function sendEmail(Request $request)
+    {
+        $email = $request->email;
+        $data = array(
+                'name' => $request->name,
+                'email_body' => $request->email_body
+            );
+        // Kirim Email
+        Mail::send('email_template', $data, function($mail) use($email) {
+            $mail->to($email, 'no-reply')
+                    ->subject("Sample Email Laravel");
+            $mail->from('farandibagas@gmail.com', 'Email');
+        });
+        // Cek kegagalan
+        if (Mail::failures()) {
+            return "Gagal mengirim Email";
+        }
+            return "Email berhasil dikirim!";
+    }
+
+    public function list()
+    {
+        $applicants = Applicant::all();
+
+        return view('applicants.list', compact('applicants'));
+    }
+
+    public function listApp($id)
+    {
+        $app = Applicant::find($id);
+
+        return view('applicants.show', compact('app'));
+    }
     /**
      * Display the specified resource.
      *
@@ -100,7 +126,7 @@ class ApplicantController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

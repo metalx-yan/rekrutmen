@@ -14,6 +14,8 @@
 
 Route::get('applicant/download/{id}', 'ApplicantController@download')->name('applicant.download');
 
+Route::post('/applicant/user', 'ApplicantController@storeUser')->name('store.user');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator']], function() {
 
     Route::resource('applicant', 'ApplicantController');
@@ -31,6 +33,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::resource('user', 'UserController');
     
     Route::put('schedule/{id}', 'JobVacancyController@scheduleStore')->name('schedule.store.job');
+
+    Route::put('schedule/{id}/scheduleedit', 'JobVacancyController@scheduleEdit')->name('schedule.edit.job');
     
     Route::resource('jobvacancy', 'JobVacancyController');
     
@@ -43,10 +47,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
 
 Route::get('lowongan/{id}', 'JobVacancyController@vacancy')->name('vacancy');
 
-// Route::get('detailJob/{id}', 'JobVacancyController@detailJob')->name('detail.job');
-
 Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function() {
 
+    Route::resource('assessment', 'AssessmentController');
+
+    Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
 
     Route::get('/', function () {
         return view('dashboard');
@@ -54,6 +59,10 @@ Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function
     
     Route::get('/user/viewprofile/{id}', 'UserController@viewData')->name('viewdata.hrd');
     
+    Route::get('list/applicants', 'ApplicantController@list')->name('list');
+
+    Route::get('list/applicant/{id}', 'ApplicantController@listApp')->name('list.app');
+
     Route::put('/user/updatedata/{id}', 'UserController@updatePassword')->name('updatedata.hrd');
 });
 

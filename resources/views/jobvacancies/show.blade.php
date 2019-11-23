@@ -68,7 +68,7 @@
                                 </button>
                             </div>
                             <div class="modal-body" >
-                                <form action=" {{ route('applicant.store') }} " method="post" enctype="multipart/form-data">
+                                <form action=" {{ route('store.user') }} " method="POST" enctype="multipart/form-data" files="true">
                                         @csrf
                                         <div class="row">
                                             <input type="hidden" value="{{ $job->id }}" name="job_vacancy_id" class="form-control {{ $errors->has('job_vacancy_id') ? 'is-invalid' : ''}}" id="job_vacancy_id" autocomplete="off">

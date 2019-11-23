@@ -92,9 +92,12 @@
                                 <tr>
                                     <td> {{ $job->id }} </td>
                                     <td> {{ $job->name }} </td>
-                                    <td> {{ $job->interviewdate }} </td>
+                                    <td> {{ $job->interviewdate->format('d/m/Y') }} </td>
                                     <td> {{ $job->interviewtime }} </td>
                                     <td> {{ $job->room }} </td>
+                                    <td> 
+                                        <a href="{{ route('jobvacancy.edit', $job->id) }}" style="margin-left:17px;" class="btn btn-warning">Update</a>
+                                    </td>
                                 </tr>
                             @endif
                         @endforeach

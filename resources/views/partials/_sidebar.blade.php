@@ -41,6 +41,14 @@
                         <a class="" href="{{ route('home.hrd') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                     </li>
 
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href=" {{ route('list') }} ">Data Pelamar</a></li>
+                            <li><a href="">Pelamar Lulus</a></li>
+                        </ul>
+                    </li>
+
                         {{-- <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Interview Schedules</span></a>
                             <ul aria-expanded="false" class="collapse">

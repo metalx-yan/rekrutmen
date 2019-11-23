@@ -115,6 +115,24 @@ class JobVacancyController extends Controller
         return view('jobvacancies.show', compact('job'));
     }
 
+
+    public function scheduleEdit(Request $request, $id)
+    {
+        $request->validate([
+            'interviewdate' => 'required|date',
+            // 'interviewtime' => 'date_format:h:i',
+            'room' => 'required|string',
+        ]);
+        
+            $update = JobVacancy::findOrFail($id);
+            $update->interviewdate = $request->interviewdate;
+            $update->interviewtime = $request->interviewtime;
+            $update->room = $request->room;
+            $update->save();
+            
+           
+        return redirect()->route('schedule.job');
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -123,7 +141,9 @@ class JobVacancyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = JobVacancy::find($id);
+
+        return view('jobvacancies.scheduleedit', compact('job'));
     }
 
     /**
@@ -135,7 +155,7 @@ class JobVacancyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

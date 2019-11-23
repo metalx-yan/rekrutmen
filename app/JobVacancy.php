@@ -29,6 +29,6 @@ class JobVacancy extends Model
 
     public function setInterviewtimeAttribute($value)
     {
-        $this->attributes['interviewtime'] = date('h:i', strtotime($value));
+        $this->attributes['interviewtime'] = date('h:i:s', strtotime($value));
     }
 }

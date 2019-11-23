@@ -83,7 +83,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        $roles = Role::all();
+
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -95,7 +99,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'username' => "required|unique:users,username,$id|max:20|string",
+            'name' => 'required|string|max:60',
+            // 'password' => 'required|string|min:6|confirmed',
+            'role_id' => 'required'
+        ]);
+
+        $user           = User::findOrFail($id);
+        $user->name     = $request->name;
+        $user->username = $request->username;
+        // $user->password = $request->password;
+        $user->role_id  = $request->role_id;
+        $user->save();
+
+        return redirect()->route('user.index');
     }
 
     public function updatePassword(Request $request, $id)
@@ -130,6 +148,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+
+        $users->delete();
+
+        return redirect()->back();
     }
 }

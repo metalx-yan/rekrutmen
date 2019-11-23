@@ -87,7 +87,7 @@
                                 <td>
                                     <div class="row">
                                         <div class="col-md-2">
-                                        <a href="  " class="btn btn-warning btn-sm">Update
+                                        <a href=" {{ route('user.edit', $user->id) }} " class="btn btn-warning btn-sm">Update
                                             <i class="ion ion-edit"></i>
                                         </a>
                                         </div>
@@ -103,7 +103,7 @@
                                         </div>
                         
                                         <div class="col-md-1">
-                                            <form class="" action="  " method="POST">
+                                            <form class="" action=" {{ route('user.destroy', $user->id) }} " method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button style="margin-left: -33px" class="ion ion-android-delete btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" name="delete" type="submit">Delete</button>

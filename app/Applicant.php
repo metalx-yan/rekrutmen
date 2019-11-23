@@ -19,4 +19,8 @@ class Applicant extends Model
         return $this->belongsTo(JobVacancy::class);
     }
     
+    public function assessment()
+    {
+        return $this->hasOne(Assessment::class);
+    }
 }
