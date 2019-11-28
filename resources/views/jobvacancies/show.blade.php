@@ -74,7 +74,7 @@
                                             <input type="hidden" value="{{ $job->id }}" name="job_vacancy_id" class="form-control {{ $errors->has('job_vacancy_id') ? 'is-invalid' : ''}}" id="job_vacancy_id" autocomplete="off">
                                             <div class="form-group col-md-4">
                                                 <label>NIK</label>
-                                                <input type="nik" value="{{ old('nik') }}" name="nik" class="form-control {{ $errors->has('nik') ? 'is-invalid' : ''}}" id="nik" autocomplete="off">
+                                                <input type="nik" max="16" value="{{ old('nik') }}" name="nik" class="form-control {{ $errors->has('nik') ? 'is-invalid' : ''}}" id="nik" autocomplete="off">
                                             {!! $errors->first('nik', '<span class="invalid-feedback">:message</span>') !!}
                                             </div>
                                             <div class="form-group col-md-4">

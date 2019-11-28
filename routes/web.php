@@ -45,9 +45,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::resource('criteria', 'CriteriaController');
 });
 
-Route::get('lowongan/{id}', 'JobVacancyController@vacancy')->name('vacancy');
+Route::get('lowongan/{slug}', 'JobVacancyController@vacancy')->name('vacancy');
 
 Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function() {
+
+    Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
 
     Route::resource('assessment', 'AssessmentController');
 
@@ -60,6 +62,8 @@ Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function
     Route::get('/user/viewprofile/{id}', 'UserController@viewData')->name('viewdata.hrd');
     
     Route::get('list/applicants', 'ApplicantController@list')->name('list');
+
+    Route::get('list/applicants/pass', 'ApplicantController@pass')->name('pass');
 
     Route::get('list/applicant/{id}', 'ApplicantController@listApp')->name('list.app');
 

@@ -26,10 +26,15 @@
 
                     <tbody>
                         @foreach ($criterias as $criteria)
+
+                            @if ($criteria->job_vacancy->end->format('d-m-Y') == Carbon\Carbon::now()->format('d-m-Y'))
+                                
+                            @else
                             <tr>
                                 <td> {{ $criteria->id }} </td>
                                 <td> {{ $criteria->name }} </td>
                             </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

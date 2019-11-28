@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobVacancy extends Model
 {
-    protected $fillable = ['start', 'end', 'name', 'status', 'interviewdate', 'interviewtime', 'room'];
+    protected $fillable = ['start', 'end', 'name', 'slug' ,'status', 'interviewdate', 'interviewtime', 'room'];
 
     protected $dates = ['start', 'end', 'interviewdate'];
 

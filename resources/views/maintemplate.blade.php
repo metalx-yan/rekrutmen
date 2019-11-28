@@ -57,7 +57,7 @@
                     {{-- </span> --}}
                     <h3>{{ ucwords($jobvacancy->name) }}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic tenetur ea in accusantium est.</p>
-                    <a href="{{ route('vacancy', $jobvacancy->id) }}" class="btn btn-warning btn-sm">Details</a>
+                    <a href="{{ route('vacancy', $jobvacancy->slug)  }}" class="btn btn-warning btn-sm">Details</a>
                   </div>
                 </div>
 

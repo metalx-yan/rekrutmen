@@ -45,28 +45,10 @@
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href=" {{ route('list') }} ">Data Pelamar</a></li>
-                            <li><a href="">Pelamar Lulus</a></li>
+                            <li><a href="{{ route('pass') }}">Pelamar Lulus</a></li>
                         </ul>
                     </li>
-
-                        {{-- <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Interview Schedules</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href=" {{ route('schedule.job') }} ">Schedules</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Test Results</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href=" ">List Candidates</a></li>
-                            </ul>
-                        </li> --}}
-
-                    
-                    {{-- <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
-                    <li class="nav-small-cap">EXTRA COMPONENTS</li>
-                     --}}
+                      
                     @endif
                 </ul>
             </nav>

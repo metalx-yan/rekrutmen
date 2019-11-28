@@ -22,7 +22,7 @@ class CreateCriteriasTable extends Migration
         Schema::table('criterias', function (Blueprint $table) {
             $table->unsignedBigInteger('job_vacancy_id');
 
-            $table->foreign('job_vacancy_id')->references('id')->on('job_vacancies');
+            $table->foreign('job_vacancy_id')->references('id')->on('job_vacancies')->onDelete('cascade');
         });
     }
 

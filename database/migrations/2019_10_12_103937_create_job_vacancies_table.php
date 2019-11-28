@@ -18,6 +18,7 @@ class CreateJobVacanciesTable extends Migration
             $table->date('start');
             $table->date('end');
             $table->string('name');
+            $table->string('slug');
             $table->string('room')->nullable();
             $table->date('interviewdate')->nullable();
             $table->time('interviewtime')->nullable();

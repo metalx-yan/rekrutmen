@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Applicant;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Mail;
 
 class ApplicantController extends Controller
 {
@@ -87,10 +88,11 @@ class ApplicantController extends Controller
 
     public function sendEmail(Request $request)
     {
+        // dd($request->all());
         $email = $request->email;
         $data = array(
                 'name' => $request->name,
-                'email_body' => $request->email_body
+                'total' => $request->total
             );
         // Kirim Email
         Mail::send('email_template', $data, function($mail) use($email) {
@@ -117,6 +119,13 @@ class ApplicantController extends Controller
         $app = Applicant::find($id);
 
         return view('applicants.show', compact('app'));
+    }
+
+    public function pass()
+    {
+        $applicants = Applicant::all();
+
+        return view('applicants.pass', compact('applicants'));
     }
     /**
      * Display the specified resource.

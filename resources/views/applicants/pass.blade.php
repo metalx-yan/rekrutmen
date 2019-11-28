@@ -17,31 +17,37 @@
                
             </div>
             <div class="card-body">
-                <table class="table border" id="myTable" style="font-size:12px;" >
+                <table class="table border" id="myTable" style="font-size:14px;" >
                     <thead>
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Telepon</th>
-                        <th>Jenis Kelamin</th>
+                        <th>Status Pernikahan</th>
                         <th>Agama</th>
                         <th>Email</th>
-                        <th>Alamat</th>
-                        <th>Berkas Lamaran</th>
+                        <th>Nilai</th>
+                        <th>Kirim Surat</th>
                     </thead>
 
                     <tbody>
                         @foreach ($applicants as $applicant)
-                            <tr>
-                                <td> {{ $applicant->name }} </td>
+                        <tr>
+                                <form action="{{ route('send.email') }}" method="post">
+                                        @csrf
+                            {{-- {{ $applicant }} --}}
+                                <td> <input type="hidden" name="name" id="" hidden value="{{$applicant->name}}"> {{ $applicant->name }} </td>
                                 <td> {{ $applicant->date_of_birth->format('d-m-Y') }} </td>
                                 <td> {{ $applicant->telp }} </td>
                                 <td> {{ $applicant->gender == 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
                                 <td> {{ $applicant->religion }} </td>
-                                <td> {{ $applicant->email }} </td>
-                                <td> {{ $applicant->address }} </td>
-                                <td> <a href=" {{ route('applicant.download', $applicant->id ) }} "> <button type="button" class="btn btn-info btn-sm">Download</button> </a> </td>
+                                <td> <input type="hidden" name="email" id="" hidden value="{{$applicant->email}}"> {{ $applicant->email }} </td>
+                                <td> <input type="hidden" name="total" hidden value="{{$applicant->assessment->total}}"> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
+                                <td>
+                                    <input type="submit" value="Enter" class="btn btn-success btn-sm">
+                                </td>
+                            </form>
                             </tr>
-                        @endforeach
+                            @endforeach
                     </tbody>
                 </table>
                 {{-- {{ $user->links() }} --}}

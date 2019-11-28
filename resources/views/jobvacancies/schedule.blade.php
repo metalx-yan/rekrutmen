@@ -31,6 +31,13 @@
 
                     <tbody>
                         @foreach ($jobs as $job)
+                        
+
+                            @if ($job->end->format('d-m-Y') == Carbon\Carbon::now()->format('d-m-Y'))
+                                
+                            @else
+                                
+
                             @if ($job->interviewdate == null || $job->interviewtime == null || $job->room == null)
                             <tr>
                                 <td> {{ $job->id }} </td>
@@ -99,6 +106,7 @@
                                         <a href="{{ route('jobvacancy.edit', $job->id) }}" style="margin-left:17px;" class="btn btn-warning">Update</a>
                                     </td>
                                 </tr>
+                            @endif
                             @endif
                         @endforeach
                     </tbody>

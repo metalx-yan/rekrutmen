@@ -104,6 +104,10 @@
 
                     <tbody>
                         @foreach ($jobs as $job)
+                            @if ($job->end->format('d-m-Y') == Carbon\Carbon::now()->format('d-m-Y'))
+                                
+                            @else
+                                
                             <tr>
                                 <td> {{ $job->id }} </td>
                                 <td> {{ $job->start->format('d-m-Y') }} </td>
@@ -112,6 +116,8 @@
                                 <td> {{ $job->status == 1 ? 'Buka' : 'Tutup' }} </td>
                                 
                             </tr>
+                            @endif
+
                         @endforeach
                     </tbody>
                 </table>

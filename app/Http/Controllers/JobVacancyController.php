@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\JobVacancy;
 use App\Requirement;
@@ -51,6 +52,7 @@ class JobVacancyController extends Controller
         $jobvacancy->start = Carbon::parse($request->start)->format('Y-m-d');
         $jobvacancy->end = Carbon::parse($request->end)->format('Y-m-d');
         $jobvacancy->name = $request->name;
+        $jobvacancy->slug = Str::slug($request->name);
         $jobvacancy->save();
 
         foreach ($request->requirements as $requirement) {
@@ -108,9 +110,9 @@ class JobVacancyController extends Controller
         // return view('jobvacancies.show', compact('job'));
     }
 
-    public function vacancy($id)
+    public function vacancy($slug)
     {
-        $job = JobVacancy::find($id);
+        $job = JobVacancy::where('slug', $slug)->first();
 
         return view('jobvacancies.show', compact('job'));
     }
@@ -166,6 +168,6 @@ class JobVacancyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

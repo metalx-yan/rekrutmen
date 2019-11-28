@@ -26,10 +26,15 @@
 
                     <tbody>
                         @foreach ($requirements as $requirement)
+                        {{-- {{ $requirement }} --}}
+                            @if ($requirement->job_vacancy->end->format('d-m-Y') == Carbon\Carbon::now()->format('d-m-Y'))
+                                    
+                            @else
                             <tr>
                                 <td> {{ $requirement->id }} </td>
                                 <td> {{ $requirement->name }} </td>
                             </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
