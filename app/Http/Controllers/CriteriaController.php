@@ -59,7 +59,9 @@ class CriteriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $criteria = Criteria::find($id);
+
+        return view('criteria.edit',compact('criteria'));
     }
 
     /**
@@ -71,7 +73,15 @@ class CriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+        
+            $update = Criteria::findOrFail($id);
+            $update->name = $request->name;
+            $update->save();
+           
+        return redirect()->route('jobUpdate', $update->job_vacancy_id);
     }
 
     /**
@@ -82,6 +92,10 @@ class CriteriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $criteria = Criteria::where('id',$id)->first();
+        $criteria->delete();
+        
+        return redirect()->back();
     }
 }

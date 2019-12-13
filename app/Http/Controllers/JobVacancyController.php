@@ -8,6 +8,7 @@ use App\JobVacancy;
 use App\Requirement;
 use App\Criteria;
 use Carbon\Carbon;
+use Request as Req;
 
 
 class JobVacancyController extends Controller
@@ -112,11 +113,11 @@ class JobVacancyController extends Controller
 
     public function vacancy($slug)
     {
+        // $job = JobVacancy::where('slug', $slug)->first();
         $job = JobVacancy::where('slug', $slug)->first();
 
         return view('jobvacancies.show', compact('job'));
     }
-
 
     public function scheduleEdit(Request $request, $id)
     {
@@ -146,6 +147,35 @@ class JobVacancyController extends Controller
         $job = JobVacancy::find($id);
 
         return view('jobvacancies.scheduleedit', compact('job'));
+    }
+
+    public function jobUpdate($id)
+    {
+        $job = JobVacancy::find($id);
+
+        $criterias = [];
+        $requirements = [];
+        foreach ($job->criterias as $value) {
+            $criterias[] = $value;
+        }
+        
+        foreach ($job->requirements as $value) {
+            $requirements[] = $value;
+        }
+        // dd(count($requirements));
+        return view('jobvacancies.update', compact('job', 'requirements', 'criterias'));
+    }
+
+    public function jobvacancyupdate(Request $request, $id)
+    {
+        $update = JobVacancy::findOrFail($id);
+        $update->start = $request->start;
+        $update->end = $request->end;
+        $update->name = $request->name;
+        $update->slug = Str::slug($request->name);
+        $update->save();
+
+        return redirect()->back();
     }
 
     /**

@@ -59,7 +59,9 @@ class RequirementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $requirement = Requirement::find($id);
+
+        return view('requirement.edit',compact('requirement'));
     }
 
     /**
@@ -71,7 +73,15 @@ class RequirementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+        
+            $update = Requirement::findOrFail($id);
+            $update->name = $request->name;
+            $update->save();
+           
+        return redirect()->route('jobUpdate', $update->job_vacancy_id);
     }
 
     /**
@@ -82,6 +92,9 @@ class RequirementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $criteria = Requirement::where('id',$id)->first();
+        $criteria->delete();
+        
+        return redirect()->back();
     }
 }

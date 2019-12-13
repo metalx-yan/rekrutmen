@@ -18,6 +18,8 @@ Route::post('/applicant/user', 'ApplicantController@storeUser')->name('store.use
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator']], function() {
 
+    Route::resource('criteria', 'CriteriaController');
+
     Route::resource('applicant', 'ApplicantController');
 
     Route::get('/', function () {
@@ -37,12 +39,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
     Route::put('schedule/{id}/scheduleedit', 'JobVacancyController@scheduleEdit')->name('schedule.edit.job');
     
     Route::resource('jobvacancy', 'JobVacancyController');
-    
+
+    Route::put('jobvacancy/{id}/update', 'JobVacancyController@jobvacancyupdate')->name('jobvacancyupdate');
+
+    Route::get('jobvacancy/{id}/update', 'JobVacancyController@jobUpdate')->name('jobUpdate');
+
     Route::get('schedule', 'JobVacancyController@schedule')->name('schedule.job');
     
     Route::resource('requirement', 'RequirementController');
     
-    Route::resource('criteria', 'CriteriaController');
 });
 
 Route::get('lowongan/{slug}', 'JobVacancyController@vacancy')->name('vacancy');

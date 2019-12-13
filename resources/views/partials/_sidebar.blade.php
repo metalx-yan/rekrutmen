@@ -27,8 +27,8 @@
                                 <li><a href=" {{ route('schedule.job') }} ">Jadwal Wawancara</a></li>
                                 <li><a href=" {{ route('applicant.index') }} ">Data Pelamar</a></li>
                                 <li><a href=" {{ route('jobvacancy.index') }} ">Lowongan Kerja</a></li>
-                                <li><a href=" {{ route('criteria.index') }} ">Kriteria</a></li>
-                                <li><a href=" {{ route('requirement.index') }} ">Persyaratan Pelamar</a></li>
+                                {{-- <li><a href=" {{ route('criteria.index') }} ">Kriteria</a></li>
+                                <li><a href=" {{ route('requirement.index') }} ">Persyaratan Pelamar</a></li> --}}
                             </ul>
                         </li>
                        

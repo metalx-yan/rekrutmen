@@ -44,17 +44,13 @@
         </div>
         </div>
         <div class="row">
-        @foreach (App\JobVacancy::all() as $jobvacancy)
+          @foreach (App\JobVacancy::all() as $jobvacancy)
             @if ($jobvacancy->end->format('Y-m-d') == Carbon\Carbon::now()->format('Y-m-d'))
-              
-            
             @elseif($jobvacancy->end->format('Y-m-d') != Carbon\Carbon::now()->format('Y-m-d'))
               <div class="col-md-6 col-lg-4 mb-4">
                 <div class="service h-100">
                     <span class="badge badge-success" style="margin-left: 80%;">{{ $jobvacancy->status == 1 ? 'Opened' : 'Closed' }}</span>
-                    {{-- <span class="wrap-icon"> --}}
                       <p><span class=""><img src="http://www.prospera-perwira.com/img/logo_prospera.png" height="20%" width="50%" alt=""></span></p>
-                    {{-- </span> --}}
                     <h3>{{ ucwords($jobvacancy->name) }}</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic tenetur ea in accusantium est.</p>
                     <a href="{{ route('vacancy', $jobvacancy->slug)  }}" class="btn btn-warning btn-sm">Details</a>

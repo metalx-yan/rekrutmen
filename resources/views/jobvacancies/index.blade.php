@@ -99,7 +99,7 @@
                         <th>Tanggal Berakhir</th>
                         <th>Bagian</th>
                         <th>Status</th>
-                        {{-- <th>Detail</th> --}}
+                        <th>Action</th>
                     </thead>
 
                     <tbody>
@@ -114,7 +114,7 @@
                                 <td> {{ $job->end->format('d-m-Y') }} </td>
                                 <td> {{ $job->name }} </td>
                                 <td> {{ $job->status == 1 ? 'Buka' : 'Tutup' }} </td>
-                                
+                                <td><a href="{{ route('jobUpdate', $job->id) }}" class="btn btn-warning btn-sm">Edit</a></td>
                             </tr>
                             @endif
 
