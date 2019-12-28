@@ -53,7 +53,7 @@
                         <label>Persyaratan Pelamar</label>
                         <div class="requirements"> 
                             <input type="hidden" name="requirements[]" value="{{ intval($requirement->id) }}" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="requirements" autocomplete="off">
-                            <input type="text" name="requirements[]" value="{{ $requirement->name }}" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="requirements" autocomplete="off">
+                            <input type="text" name="requirements[]" disabled value="{{ $requirement->name }}" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="requirements" autocomplete="off">
                         </div>
                             <label>&nbsp;</label>
                             {!! $errors->first('requirements', '<span class="invalid-feedback">:message</span>') !!}

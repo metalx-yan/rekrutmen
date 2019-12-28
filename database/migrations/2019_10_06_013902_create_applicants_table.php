@@ -26,6 +26,7 @@ class CreateApplicantsTable extends Migration
             $table->string('religion');
             $table->string('email')->unique();
             $table->string('resume')->nullable();
+            $table->boolean('acc')->default(0);
             $table->timestamps();
         });
     }

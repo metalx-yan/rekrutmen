@@ -104,7 +104,7 @@ class ApplicantController extends Controller
         if (Mail::failures()) {
             return "Gagal mengirim Email";
         }
-            return "Email berhasil dikirim!";
+            return redirect()->back();
     }
 
     public function list()

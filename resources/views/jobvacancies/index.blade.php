@@ -54,7 +54,7 @@
                                         <div class="form-group col-md-4">
                                             <label>Persyaratan Pelamar</label>
                                             <div id="plusrec">
-                                                <input type="text" name="requirements[]" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="requirements" autocomplete="off">
+                                                <input type="text" name="requirements[]" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="requirements" required autocomplete="off">
                                                 <label>&nbsp;</label>
                                             </div>
                                             {!! $errors->first('requirements', '<span class="invalid-feedback">:message</span>') !!}
@@ -67,7 +67,7 @@
                                         <div class="form-group col-md-4">
                                             <label>Kriteria</label>
                                             <div id="pluscri">
-                                                <input type="text" name="criterias[]" class="form-control {{ $errors->has('criterias') ? 'is-invalid' : ''}}" id="criterias" autocomplete="off">
+                                                <input type="text" name="criterias[]" class="form-control {{ $errors->has('criterias') ? 'is-invalid' : ''}}" id="criterias" autocomplete="off" required>
                                                 <label>&nbsp;</label>
                                             </div>
                                             {!! $errors->first('criterias', '<span class="invalid-feedback">:message</span>') !!}
@@ -162,7 +162,7 @@
             ++i;
             
 
-            $("#plusrec").append('<div id="hide"><input type="text" name="requirements[]" class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="recruitments" autocomplete="off"><button type="button" class="btn btn-danger remove-tr">Remove</button></div>');
+            $("#plusrec").append('<div id="hide"><input type="text" name="requirements[]" required class="form-control {{ $errors->has('requirements') ? 'is-invalid' : ''}}" id="recruitments" autocomplete="off"><button type="button" class="btn btn-danger remove-tr">Remove</button></div>');
             $('#plusrec').append('<br id="rem">')
 
         });
@@ -182,7 +182,7 @@
 
         ++i;
 
-        $("#pluscri").append('<div id="hids"><input type="text" name="criterias[]" class="form-control {{ $errors->has('criterias') ? 'is-invalid' : ''}}" id="criterias" autocomplete="off"><button type="button" class="btn btn-danger remove-trs">Remove</button></div>');
+        $("#pluscri").append('<div id="hids"><input type="text" name="criterias[]" required class="form-control {{ $errors->has('criterias') ? 'is-invalid' : ''}}" id="criterias" autocomplete="off"><button type="button" class="btn btn-danger remove-trs">Remove</button></div>');
         $('#pluscri').append('<br id="rems">')
 
     });

@@ -26,6 +26,7 @@
                         <th>Agama</th>
                         <th>Email</th>
                         <th>Nilai</th>
+                        <th>Status</th>
                         <th>Kirim Surat</th>
                     </thead>
 
@@ -42,6 +43,7 @@
                                 <td> {{ $applicant->religion }} </td>
                                 <td> <input type="hidden" name="email" id="" hidden value="{{$applicant->email}}"> {{ $applicant->email }} </td>
                                 <td> <input type="hidden" name="total" hidden value="{{$applicant->assessment->total}}"> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
+                                <td> <input type="hidden" >{!! $applicant->assessment->total <= 80 ? '<span class="badge badge-danger">Belum Lulus</span>' : '<span class="badge badge-success">Lulus</span>'  !!}</td>
                                 <td>
                                     <input type="submit" value="Enter" class="btn btn-success btn-sm">
                                 </td>
