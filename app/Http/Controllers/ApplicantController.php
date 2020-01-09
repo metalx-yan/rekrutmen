@@ -97,7 +97,7 @@ class ApplicantController extends Controller
         // Kirim Email
         Mail::send('email_template', $data, function($mail) use($email) {
             $mail->to($email, 'no-reply')
-                    ->subject("Sample Email Laravel");
+                    ->subject("Hasil Tes Interview");
             $mail->from('farandibagas@gmail.com', 'Email');
         });
         // Cek kegagalan
@@ -107,11 +107,41 @@ class ApplicantController extends Controller
             return redirect()->back();
     }
 
+    public function sendEmailQualification(Request $request)
+    {
+        dd($request->all());
+        // dd(Carbon::parse($request->job_vacancy)->format('d F Y'));
+        $email = $request->email;
+        $data = array(
+                'name' => $request->name,
+                'total' => $request->total,
+                'job_vacancy' => Carbon::parse($request->job_vacancy)->format('d F Y'),
+            );
+        // Kirim Email
+        Mail::send('email_template_qualification', $data, function($mail) use($email) {
+            $mail->to($email, 'no-reply')
+                    ->subject("Panggilan Interview");
+            $mail->from('farandibagas@gmail.com', 'Email');
+        });
+        // Cek kegagalan
+        if (Mail::failures()) {
+            return "Gagal mengirim Email";
+        }
+            return redirect()->back();
+    }
+    
     public function list()
     {
         $applicants = Applicant::all();
 
         return view('applicants.list', compact('applicants'));
+    }
+
+    public function listAll()
+    {
+        $applicants = Applicant::all();
+
+        return view('applicants.all', compact('applicants'));
     }
 
     public function listApp($id)

@@ -44,7 +44,8 @@
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href=" {{ route('list') }} ">Data Pelamar</a></li>
+                            <li><a href=" {{ route('listall') }}">Daftar Pelamar</a></li>
+                            <li><a href="{{ route('list') }}">Daftar Pelamar Seleksi</a></li>
                             <li><a href="{{ route('pass') }}">Status Pelamar</a></li>
                         </ul>
                     </li>

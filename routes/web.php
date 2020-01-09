@@ -56,6 +56,8 @@ Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function
 
     Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
 
+    Route::post('/send-email-qualification', 'ApplicantController@sendEmailQualification')->name('send.email.qualification');
+
     Route::resource('assessment', 'AssessmentController');
 
     Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
@@ -67,6 +69,8 @@ Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function
     Route::get('/user/viewprofile/{id}', 'UserController@viewData')->name('viewdata.hrd');
     
     Route::get('list/applicants', 'ApplicantController@list')->name('list');
+
+    Route::get('list/applicants/all', 'ApplicantController@listAll')->name('listall');
 
     Route::get('list/applicants/pass', 'ApplicantController@pass')->name('pass');
 

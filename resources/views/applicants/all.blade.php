@@ -25,31 +25,27 @@
                         <th>Status Pernikahan</th>
                         <th>Agama</th>
                         <th>Email</th>
-                        <th>Nilai</th>
-                        <th>Status</th>
-                        <th>Kirim Surat</th>
+                        <th>Kirim Surat Panggilan</th>
                     </thead>
 
                     <tbody>
                         @foreach ($applicants as $applicant)
                         <tr>
-                                <form action="{{ route('send.email') }}" method="post">
+                                <form action="{{ route('send.email.qualification') }}" method="post">
                                         @csrf
                             {{-- {{ $applicant }} --}}
+                                <input type="hidden" name="job_vacancy" id="" hidden value="{{$applicant->job_vacancy->interviewdate}}">
                                 <td> <input type="hidden" name="name" id="" hidden value="{{$applicant->name}}"> {{ $applicant->name }} </td>
                                 <td> {{ $applicant->date_of_birth->format('d-m-Y') }} </td>
-                                <td> {{ $applicant->telp }} </td>
+                                <td> <input type="hidden" name="telp" id="" hidden value="{{$applicant->telp}}"> {{ $applicant->telp }} </td>
                                 <td> {{ $applicant->gender == 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
                                 <td> {{ $applicant->religion }} </td>
                                 <td> <input  name="email" id="" hidden value="{{$applicant->email}}"> {{ $applicant->email }} </td>
-                                <td> <input  name="total" hidden value="{{$applicant->assessment->total}}"> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
-                                <td> {!! $applicant->assessment->total <= 80 ? '<span class="badge badge-danger">Belum Lulus</span>' : '<span class="badge badge-success">Lulus</span>'  !!}</td>
-                                @if ($applicant->assessment->total >= 80 and $applicant->assessment->total <= 100)
                                     <td>
                                         <input type="submit" value="Enter" class="btn btn-success btn-sm">
                                     </td>
-                                @endif
-                            </form>
+
+                                </form>
                             </tr>
                             @endforeach
                     </tbody>

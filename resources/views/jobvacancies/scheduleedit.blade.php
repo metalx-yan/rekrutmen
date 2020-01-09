@@ -42,7 +42,7 @@
 
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </form>
