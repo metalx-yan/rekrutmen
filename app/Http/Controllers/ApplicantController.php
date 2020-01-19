@@ -157,6 +157,13 @@ class ApplicantController extends Controller
 
         return view('applicants.pass', compact('applicants'));
     }
+
+    public function accDir()
+    {
+        $applicants = Applicant::all();
+
+        return view('applicants.accdir', compact('applicants'));
+    }
     /**
      * Display the specified resource.
      *

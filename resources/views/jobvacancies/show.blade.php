@@ -26,14 +26,14 @@
                     <div class="row">
                         <span style="font-size: 200%; font-weight: bold; margin-left: 25%; margin-top:3%; margin-bottom:2%;">Lowongan Pekerjaan</span>
                         
-                        <p style="width:90%; margin-left:30px; text-align:justify;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias ab aliquam perferendis reiciendis dolor quae repudiandae iste impedit temporibus at, laborum quia consequuntur eligendi voluptas recusandae. Eius sequi iure dolores.</p>
+                        <p ><h3 style="margin-left: 36%;"> Dibutuhkan:</h3></p>
                     </div>
                     <hr>
                         <h2><center>{{ ucwords($job->name) }}</center></h2>
                         <div class="align-center" style="width:90%; margin-left:30px; text-align:justify;">
 
                             <h4>
-                                <b>Criteria</b>
+                                <b>Kriteria</b>
                             </h4>
                             @foreach ($job->criterias as $criteria)
                             <h6><li style="color: #777;">{{ $criteria->name }}</li></h6>
@@ -41,7 +41,7 @@
                             <br>
                             
                             <h4>
-                                <b>Requirement</b>
+                                <b>Persyaratan</b>
                             </h4>
                             @foreach ($job->requirements as $requirement)
                             <h6><li style="color: #777;">{{ $requirement->name }}</li></h6>

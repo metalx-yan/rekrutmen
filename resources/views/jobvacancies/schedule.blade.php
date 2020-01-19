@@ -21,11 +21,10 @@
             <div class="card-body">
                 <table class="table border" id="myTable">
                     <thead>
-                        <th>Id</th>
                         <th>Bagian</th>
-                        <th>Tanggal Wawancara</th>
-                        <th>Waktu Wawancara</th>
-                        <th>Tempat Wawancara</th>
+                        <th>Tanggal Tes</th>
+                        <th>Waktu Tes</th>
+                        <th>Tempat Tes</th>
                         <th>Create Schedule</th>
                     </thead>
 
@@ -40,7 +39,6 @@
 
                             @if ($job->interviewdate == null || $job->interviewtime == null || $job->room == null)
                             <tr>
-                                <td> {{ $job->id }} </td>
                                 <td> {{ $job->name }} </td>
                                 <td> - </td>
                                 <td> - </td>

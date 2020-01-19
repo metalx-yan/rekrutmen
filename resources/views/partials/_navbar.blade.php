@@ -78,7 +78,7 @@
                                             <a href=" {{ Auth::user()->role->name == 'administrator' ?  route('viewdata.admin', Auth::user()->id) :  route('viewdata.hrd', Auth::user()->id) }} " class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                     </div>
                                 </li>
-                                @if (Auth::user()->role->name == 'administrator')
+                                @if (Auth::user()->role->name == 'hrd')
                                 <hr>
                                     <li><a href=" {{ route('user.index') }} "><i class="ti-wallet"></i> Add Account</a></li>
                                 @endif

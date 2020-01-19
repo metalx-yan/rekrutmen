@@ -27,11 +27,12 @@
                         <th>Email</th>
                         <th>Nilai</th>
                         <th>Status</th>
-                        <th>Kirim Surat</th>
                     </thead>
 
                     <tbody>
                         @foreach ($applicants as $applicant)
+                            @if ($applicant->assessment->total >= 80)
+                                
                         <tr>
                                 <form action="{{ route('send.email') }}" method="post">
                                         @csrf
@@ -42,20 +43,13 @@
                                 <td> {{ $applicant->gender == 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
                                 <td> {{ $applicant->religion }} </td>
                                 <td> <input  name="email" id="" hidden value="{{$applicant->email}}"> {{ $applicant->email }} </td>
-                                @if ($applicant->assessment == null)
-                                    
-                                @else
-                                    
-                                    <td> <input  name="total" hidden value="{{$applicant->assessment->total}}"> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
-                                    <td> {!! $applicant->assessment->total <= 80 ? '<span class="badge badge-danger">Belum Lulus</span>' : '<span class="badge badge-success">Lulus</span>'  !!}</td>
-                                    @if ($applicant->assessment->total >= 80 and $applicant->assessment->total <= 100)
-                                        <td>
-                                            <input type="submit" value="Enter" class="btn btn-success btn-sm">
-                                        </td>
-                                    @endif
-                                @endif
+                                <td> <input  name="total" hidden value="{{$applicant->assessment->total}}"> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
+                                <td> {!! $applicant->assessment->total <= 80 ? '<span class="badge badge-danger">Belum Lulus</span>' : '<span class="badge badge-success">Lulus</span>'  !!}</td>
+           
                             </form>
                             </tr>
+                            @endif
+
                             @endforeach
                     </tbody>
                 </table>

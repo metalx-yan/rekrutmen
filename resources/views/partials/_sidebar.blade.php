@@ -15,7 +15,7 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    @if (Auth::user()->role->name == 'administrator')
+                    @if (Auth::user()->role->name == 'hrd')
                     <li class="nav-small-cap">PERSONAL</li>
                         <li>
                         <a class="" href="{{ route('home.admin') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
@@ -24,18 +24,21 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href=" {{ route('schedule.job') }} ">Jadwal Wawancara</a></li>
-                                <li><a href=" {{ route('applicant.index') }} ">Data Pelamar</a></li>
                                 <li><a href=" {{ route('jobvacancy.index') }} ">Lowongan Kerja</a></li>
+                                <li><a href=" {{ route('applicant.index') }} ">Data Pelamar</a></li>
+                                <li><a href=" {{ route('schedule.job') }} ">Jadwal Tes</a></li>
                                 {{-- <li><a href=" {{ route('criteria.index') }} ">Kriteria</a></li>
                                 <li><a href=" {{ route('requirement.index') }} ">Persyaratan Pelamar</a></li> --}}
+                                <li><a href=" {{ route('listall') }}">Daftar Pelamar</a></li>
+                                <li><a href="{{ route('list') }}">Daftar Pelamar Seleksi</a></li>
+                                <li><a href="{{ route('pass') }}">Status Pelamar</a></li>
                             </ul>
                         </li>
                        
                     @endif
                     
                     
-                    @if (Auth::user()->role->name == 'hrd')
+                    @if (Auth::user()->role->name == 'direktur')
                     <li class="nav-small-cap">PERSONAL</li>
                     <li>
                         <a class="" href="{{ route('home.hrd') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
@@ -44,9 +47,7 @@
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href=" {{ route('listall') }}">Daftar Pelamar</a></li>
-                            <li><a href="{{ route('list') }}">Daftar Pelamar Seleksi</a></li>
-                            <li><a href="{{ route('pass') }}">Status Pelamar</a></li>
+                            <li><a href="{{ route('acc') }}">Pelamar Diterima</a></li>
                         </ul>
                     </li>
                       

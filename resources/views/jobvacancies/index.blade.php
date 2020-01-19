@@ -94,7 +94,7 @@
             <div class="card-body">
                 <table class="table border" id="myTable">
                     <thead>
-                        <th>Id</th>
+                        {{-- <th>Id</th> --}}
                         <th>Tanggal Mulai</th>
                         <th>Tanggal Berakhir</th>
                         <th>Bagian</th>
@@ -109,15 +109,24 @@
                             @else
                                 
                             <tr>
-                                <td> {{ $job->id }} </td>
+                                {{-- <td> {{ $job->id }} </td> --}}
                                 <td> {{ $job->start->format('d-m-Y') }} </td>
                                 <td> {{ $job->end->format('d-m-Y') }} </td>
                                 <td> {{ $job->name }} </td>
                                 <td> {{ $job->status == 1 ? 'Buka' : 'Tutup' }} </td>
-                                <td><a href="{{ route('jobUpdate', $job->id) }}" class="btn btn-warning btn-sm">Edit</a></td>
-                            </tr>
-                            @endif
+                                <td><a href="{{ route('jobUpdate', $job->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <form action="{{ route('jobvacancy.destroy', $job->id) }}" method="post">
+                                        @csrf 
+                                        @method('DELETE') 
+                                        
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        
+                                    </form>
+                                </td>
 
+                                </tr>
+                                @endif
+                                
                         @endforeach
                     </tbody>
                 </table>

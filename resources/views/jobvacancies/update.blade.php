@@ -95,8 +95,17 @@
                     </div>
                 </div>
 
-                
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <button type="submit" class="btn btn-primary">Ubah</button>
+                    </div>
+                </div>
+            </form>
+    <hr>                
 
+                <form action=" {{ route('jobStore') }} " method="post">
+                    @csrf
+                    <input type="hidden" value="{{$job->id}}" name="id">
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label>Persyaratan Pelamar</label>
@@ -125,14 +134,9 @@
                         <button type="button" id="addcri" name="add" class="btn btn-success">Add</button>
                     </div>
                 </div>
-                {{-- @endforeach --}}
-
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>
-                </div>
-            </form>
+                <button type="submit" class="btn btn-primary">Tambah Persyaratan dan Kriteria</button>
+                </form>
+                
 
         </div>
     </div>

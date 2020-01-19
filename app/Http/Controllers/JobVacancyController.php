@@ -40,6 +40,26 @@ class JobVacancyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function jobStore(Request $request)
+    {
+        foreach ($request->requirements as $requirement) {
+            Requirement::create([
+                'name' => $requirement,
+                'job_vacancy_id' => $request->id
+            ]);
+        }
+
+        foreach ($request->criterias as $criteria) {
+            Criteria::create([
+                'name' => $criteria,
+                'job_vacancy_id' => $request->id
+            ]);
+        }
+        
+        return redirect()->back();
+    }
+
     public function store(Request $request)
     {
         // dd($request);
@@ -158,11 +178,10 @@ class JobVacancyController extends Controller
         foreach ($job->criterias as $value) {
             $criterias[] = $value;
         }
-        
         foreach ($job->requirements as $value) {
             $requirements[] = $value;
         }
-        // dd(count($requirements));
+        
         return view('jobvacancies.update', compact('job', 'requirements', 'criterias'));
     }
 
@@ -198,6 +217,10 @@ class JobVacancyController extends Controller
      */
     public function destroy($id)
     {
+        $delete = JobVacancy::find($id);
         
+        $delete->delete();
+
+        return redirect()->back();
     }
 }

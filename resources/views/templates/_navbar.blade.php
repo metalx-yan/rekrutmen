@@ -15,11 +15,11 @@
                     </a></div>
   
                     <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
-                      <li><a href="#beranda" class="nav-link">Beranda</a></li>
-                      <li><a href="#about-section" class="nav-link">Profil Perusahaan</a></li>
-                      <li><a href="#lowongan-kerja" class="nav-link">Lowongan Kerja</a></li>
-                      <li><a href="#testimonial-section" class="nav-link">Testimonial</a></li>
-                      <li><a href="#contact" class="nav-link">Kontak</a></li>
+                      <li><a href="#beranda" class="nav-link" style="color:cornflowerblue">Beranda</a></li>
+                      <li><a href="#about-section" class="nav-link" style="color:cornflowerblue">Profile Perusahaan</a></li>
+                      <li><a href="#lowongan-kerja" class="nav-link" style="color:cornflowerblue">Lowongan Kerja</a></li>
+                      <li><a href="#jadwal-test" class="nav-link" style="color:cornflowerblue">Jadwal Tes</a></li>
+                      <li><a href="#hasil" class="nav-link" style="color:cornflowerblue">Hasil Tes</a></li>
                     </ul>
                   </div>
                 </nav>

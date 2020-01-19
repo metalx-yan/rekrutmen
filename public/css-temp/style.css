@@ -5,8 +5,8 @@ body {
   font-weight: 300;
   font-size: 1rem;
   font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background-image: url("../images/polygon.png");
-  background-position: -500px -1585px;
+  background-image: url("../images/temps.png");
+  /* background-position: -500px -1585px; */
   background-repeat: no-repeat; }
 
 ::-moz-selection {
@@ -129,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4.5em 0; }
   @media (min-width: 768px) {
     .site-section {
-      padding: 7em 0; } }
+      padding: 8em 0; } }
   .site-section.site-section-sm {
     padding: 4em 0; }
 

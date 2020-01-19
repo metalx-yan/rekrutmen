@@ -16,7 +16,7 @@ Route::get('applicant/download/{id}', 'ApplicantController@download')->name('app
 
 Route::post('/applicant/user', 'ApplicantController@storeUser')->name('store.user');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator']], function() {
+Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function() {
 
     Route::resource('criteria', 'CriteriaController');
 
@@ -44,39 +44,43 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
 
     Route::get('jobvacancy/{id}/update', 'JobVacancyController@jobUpdate')->name('jobUpdate');
 
+    Route::post('jobvacancy/store', 'JobVacancyController@jobStore')->name('jobStore');
+
     Route::get('schedule', 'JobVacancyController@schedule')->name('schedule.job');
     
     Route::resource('requirement', 'RequirementController');
     
+    Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
+    
+    Route::post('/send-email-qualification', 'ApplicantController@sendEmailQualification')->name('send.email.qualification');
+    
+    Route::resource('assessment', 'AssessmentController');
+    
+    Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
+        
+    Route::get('list/applicants', 'ApplicantController@list')->name('list');
+    
+    Route::get('list/applicants/all', 'ApplicantController@listAll')->name('listall');
+    
+    Route::get('list/applicants/pass', 'ApplicantController@pass')->name('pass');
+    
+    Route::get('list/applicant/{id}', 'ApplicantController@listApp')->name('list.app');
+    
+    Route::put('/user/updatedata/{id}', 'UserController@updatePassword')->name('updatedata.hrd');
 });
 
 Route::get('lowongan/{slug}', 'JobVacancyController@vacancy')->name('vacancy');
 
-Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function() {
-
-    Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
-
-    Route::post('/send-email-qualification', 'ApplicantController@sendEmailQualification')->name('send.email.qualification');
-
-    Route::resource('assessment', 'AssessmentController');
-
-    Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
+Route::group(['prefix' => 'direktur', 'middleware' => ['auth', 'role:direktur']], function() {
 
     Route::get('/', function () {
         return view('dashboard');
     })->name('home.hrd');
-    
+
+    Route::get('list/applicants/acc', 'ApplicantController@accDir')->name('acc');
+
     Route::get('/user/viewprofile/{id}', 'UserController@viewData')->name('viewdata.hrd');
-    
-    Route::get('list/applicants', 'ApplicantController@list')->name('list');
 
-    Route::get('list/applicants/all', 'ApplicantController@listAll')->name('listall');
-
-    Route::get('list/applicants/pass', 'ApplicantController@pass')->name('pass');
-
-    Route::get('list/applicant/{id}', 'ApplicantController@listApp')->name('list.app');
-
-    Route::put('/user/updatedata/{id}', 'UserController@updatePassword')->name('updatedata.hrd');
 });
 
 
