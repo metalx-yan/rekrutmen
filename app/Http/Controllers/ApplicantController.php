@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use App\Assessment;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Mail;
+use Illuminate\Support\Facades\DB;
 
 class ApplicantController extends Controller
 {
@@ -65,9 +68,16 @@ class ApplicantController extends Controller
         ]);
 
         if ($request->hasFile('resume')) {
+            $user = User::create([
+                'name' => $request->name,
+                'username' => strtolower(str_replace(' ', '', $request->name)),
+                'password' => 'user',
+                'role_id' => '3'
+            ]);
+            // dd($user->id);
             Applicant::create([
                 'nik' => $request->nik,
-                'name' => $request->name,
+                'name' => $user->name,
                 'address' => $request->address,
                 'place_of_birth' => $request->place_of_birth,
                 'date_of_birth' => Carbon::parse($request->date_of_birth)->format('Y-m-d'),
@@ -77,7 +87,8 @@ class ApplicantController extends Controller
                 'religion' => $request->religion,
                 'email' => $request->email,
                 'resume' => $request->file('resume')->store('files'),
-                'job_vacancy_id' => $request->job_vacancy_id
+                'job_vacancy_id' => $request->job_vacancy_id,
+                'user_id' => $user->id
             ]);
                 
         }
@@ -109,13 +120,14 @@ class ApplicantController extends Controller
 
     public function sendEmailQualification(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         // dd(Carbon::parse($request->job_vacancy)->format('d F Y'));
         $email = $request->email;
         $data = array(
                 'name' => $request->name,
                 'total' => $request->total,
                 'job_vacancy' => Carbon::parse($request->job_vacancy)->format('d F Y'),
+                'posisi' => $request->posisi
             );
         // Kirim Email
         Mail::send('email_template_qualification', $data, function($mail) use($email) {
@@ -147,8 +159,11 @@ class ApplicantController extends Controller
     public function listApp($id)
     {
         $app = Applicant::find($id);
-
-        return view('applicants.show', compact('app'));
+        $ass = Assessment::where('applicant_id', $id)->get();
+        $hsl = $ass[0]->id;
+        $sq = DB::table('assessments')->select('written')->join('applicants','assessments.applicant_id','=','applicants.id')->get();
+        // dd($sq[0]->written);        
+        return view('applicants.show', compact('app','sq','hsl'));
     }
 
     public function pass()

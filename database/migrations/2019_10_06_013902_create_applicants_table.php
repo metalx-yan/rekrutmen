@@ -17,6 +17,7 @@ class CreateApplicantsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('nik')->unique();
             $table->string('name');
+            $table->integer('user_id');
             $table->text('address');
             $table->string('place_of_birth');
             $table->date('date_of_birth')->nullable();

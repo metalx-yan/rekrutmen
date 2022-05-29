@@ -32,6 +32,7 @@
                                 <li><a href=" {{ route('listall') }}">Daftar Pelamar</a></li>
                                 <li><a href="{{ route('list') }}">Daftar Pelamar Seleksi</a></li>
                                 <li><a href="{{ route('pass') }}">Status Pelamar</a></li>
+                                <li><a href="{{  route('psikotest.index') }}">Soal Test</a></li>
                             </ul>
                         </li>
                        
@@ -51,6 +52,19 @@
                         </ul>
                     </li>
                       
+                    @endif
+
+                    
+                    @if (Auth::user()->role->name == 'user')
+                    <li class="nav-small-cap">PERSONAL</li>
+                    <li>
+                        <a class="" href="{{ route('home.user') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                    </li>
+
+                    <li>
+                        <a class="" href="{{ route('psikotest.soal') }}" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Soal Psikotest</span></a>
+                    </li>
+
                     @endif
                 </ul>
             </nav>

@@ -18,6 +18,8 @@ Route::post('/applicant/user', 'ApplicantController@storeUser')->name('store.use
 
 Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function() {
 
+    Route::resource('psikotest', 'PsikotestController');
+
     Route::resource('criteria', 'CriteriaController');
 
     Route::resource('applicant', 'ApplicantController');
@@ -83,6 +85,18 @@ Route::group(['prefix' => 'direktur', 'middleware' => ['auth', 'role:direktur']]
 
 });
 
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function() {
+
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('home.user');
+
+    Route::resource('answer', 'AnswerController');
+    Route::get('psikotest', 'PsikotestController@soal')->name('psikotest.soal');
+
+
+});
+
 
 Route::get('/', function () {
 
@@ -90,7 +104,7 @@ Route::get('/', function () {
 
     // $records = DB::table('criterias')->get();
 
-    return view('welcome', compact('schema', 'records'));
+    return view('welcome');
 });
 
 Auth::routes();

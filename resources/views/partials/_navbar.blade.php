@@ -17,7 +17,7 @@
                     <!-- Logo text -->
                     <span>
                      <!-- dark Logo text -->
-                     <img src="http://www.prospera-perwira.com/img/logo_prospera.png " height="50%" width="50%" alt="homepage" class="dark-logo" />
+                     <img src="{{ asset('images/A72.png') }} " height="30%" width="40%" alt="homepage" class="dark-logo" />
                      <!-- Light Logo text -->    
                      <img src="{{ asset('images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
             </div>

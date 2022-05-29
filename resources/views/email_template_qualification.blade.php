@@ -20,6 +20,7 @@
              Saudara untuk menghadiri sesi interview/ wawancara pada:</div>
  <p>
      &nbsp;&nbsp;&nbsp; Tanggal : {{ $job_vacancy }} <p>
+     &nbsp;&nbsp;&nbsp; Posisi  : {{ $posisi }} <p>
      &nbsp;&nbsp;&nbsp; Waktu   : 09.00 s/d Selesai<p>
      &nbsp;&nbsp;&nbsp; Tempat  : Kantor Pusat PT. Prospera Perwira Utama, Crown Green Lake City, Blk. H
      No.16, RT.004/RW.008, Petir, Kec. Cipondoh, Kota Tangerang, Banten

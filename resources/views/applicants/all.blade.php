@@ -33,8 +33,8 @@
                         <tr>
                                 <form action="{{ route('send.email.qualification') }}" method="post">
                                         @csrf
-                            {{-- {{ $applicant }} --}}
                                 <input type="hidden" name="job_vacancy" id="" hidden value="{{$applicant->job_vacancy->interviewdate}}">
+                                <input type="hidden" name="posisi" id="" hidden value="{{$applicant->job_vacancy->name}}">
                                 <td> <input type="hidden" name="name" id="" hidden value="{{$applicant->name}}"> {{ $applicant->name }} </td>
                                 <td> {{ $applicant->date_of_birth->format('d-m-Y') }} </td>
                                 <td> <input type="hidden" name="telp" id="" hidden value="{{$applicant->telp}}"> {{ $applicant->telp }} </td>

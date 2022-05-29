@@ -36,4 +36,9 @@ class JobVacancy extends Model
     {
         $this->attributes['start'] = date('Y-m-d', strtotime($value));
     }
+
+    public function psikotests()
+    {
+    	return $this->belongsToMany(Psikotest::class,'psikotest_jobvacancy');
+    }
 }

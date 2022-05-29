@@ -10,7 +10,7 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active">Job Vacancy</li>
                     <li class="breadcrumb-item active">List</li>
-                </ol>
+                </ol>   
             </div>
         </div>
         <div class="card">
@@ -21,6 +21,7 @@
             <div class="card-body">
                 <table class="table border" id="myTable">
                     <thead>
+                        <th>No</th>
                         <th>Bagian</th>
                         <th>Tanggal Tes</th>
                         <th>Waktu Tes</th>

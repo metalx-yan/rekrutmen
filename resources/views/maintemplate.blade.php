@@ -50,7 +50,7 @@
               <div class="col-md-6 col-lg-4 mb-4">
                 <div class="service h-100">
                     <span class="badge badge-success" style="margin-left: 80%;">{{ $jobvacancy->status == 1 ? 'Opened' : 'Closed' }}</span>
-                      <p><span class=""><img src="http://www.prospera-perwira.com/img/logo_prospera.png" height="20%" width="50%" alt=""></span></p>
+                      <p><span class=""><img src="{{ asset('images/A72.png') }}" height="20%" width="30%" alt=""></span></p>
                     <h3>{{ ucwords($jobvacancy->name) }}</h3>
                     <p>PT. Prospera Perwira Utama adalah sebuah perusahaan pengadaan alat-alat IT (information technology) yang bergerak di bidang Network Infrastructure...</p>
                     <a href="{{ route('vacancy', $jobvacancy->slug)  }}" class="btn btn-warning btn-sm">Details</a>

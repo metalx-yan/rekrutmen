@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Assessment;
-use Carbon\Carbon;
-class AssessmentController extends Controller
+use App\Answer;
+use Illuminate\Support\Facades\DB;
+
+class AnswerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,29 +36,33 @@ class AssessmentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->id);
-        // dd(($request->interview + $request->written)/2);
-        // $request->validate([
-        //     'interview' => 'required',
-        //     'written' => 'required',
-        //     'applicant_id' => 'required',
-        // ]);
-        
-        $sum = ($request->interview + $request->written)/2;
+        // $arr = [];
+        foreach ($request->all() as $key => $value) {
+            if(strpos($key, 'answer_') !== false){
+                Answer::create([
+                    'user_id' => $request->user,
+                    'result' => explode('_',$value)[0],
+                    'psikotest_id' => explode('_',$value)[1]
+                ]);
+            } 
+        }
 
-        $update = Assessment::findOrFail($request->id);
-        $update->interview = $request->interview;
-        $update->total = $sum;
-        $update->created_at = Carbon::now();
-        $update->save();
+        $sa = DB::select('SELECT count(*) as result, d.id  as app from answers a
+        join psikotests b
+        on a.psikotest_id = b.id
+        join users c
+        on a.user_id = c.id
+        join applicants d
+        on c.id = d.user_id
+        where a.result = b.answer_correct
+        group by d.id');
+        DB::table('assessments')->insert([
+            'written' => $sa[0]->result,
+            'applicant_id' => $sa[0]->app,
+        ]);
 
-        // Assessment::create([
-        //     'interview' => $request->interview,
-        //     'total' => $sum,
-        //     'applicant_id' => $request->applicant_id,
-        // ]);
-        return redirect()->route('list');
-
+        return redirect()->back();
+        // dd(json_decode($request->job)->pivot->psikotest_id, $request->user,$arr);
     }
 
     /**
@@ -68,7 +73,7 @@ class AssessmentController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

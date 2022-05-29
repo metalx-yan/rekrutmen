@@ -39,9 +39,9 @@
                                 <td> {{ $applicant->gender == 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
                                 <td> {{ $applicant->religion }} </td>
                                 <td> {{ $applicant->email }} </td>
-                                <td> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
+                                <td> {{ is_null($applicant->assessment->interview) ? '' : $applicant->assessment->total }} </td>
                                 {{-- <td> {{ $applicant->assessment->total != null ?  $applicant->assessment->total : ''}} </td> --}}
-                                <td> @if (is_null($applicant->assessment))
+                                <td> @if (is_null($applicant->assessment->interview))
                                         <a href="{{ route('list.app', $applicant->id) }}" class="btn btn-primary btn-sm">Enter</a>
                                     @else
                                         
