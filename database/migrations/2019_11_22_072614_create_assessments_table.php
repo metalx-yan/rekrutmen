@@ -15,16 +15,16 @@ class CreateAssessmentsTable extends Migration
     {
         Schema::create('assessments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('interview');
+            $table->integer('interview')->nullable();
             $table->integer('written');
-            $table->integer('total');
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
 
         Schema::table('assessments', function (Blueprint $table) {
             $table->unsignedBigInteger('applicant_id');
 
-            $table->foreign('applicant_id')->references('id')->on('applicants');
+            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
         });
     }
 

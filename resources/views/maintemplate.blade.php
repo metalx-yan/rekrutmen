@@ -40,7 +40,7 @@
         <div class="row mb-5">
           <div class="col-md-7">
             <h2 class="heading">Lowongan Kerja</h2>
-            <p>PT. Prospera Perwira Utama adalah sebuah perusahaan pengadaan alat-alat IT (information technology) yang berlokasi di Crown Green Lake City. Perusahaan ini memberikan penyediaan solusi dan layanan perangkat keras serta perangkat lunak tingkat operator yang inovatif. Yang membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang Anda butuhkan.</p>
+            <p>PT. Anugrah Distributor Indonesia adalah sebuah perusahaan care car dan cat semprot yang berlokasi di Jalan Prabu Kian Santang, Tangerang. Perusahaan ini memberikan penyediaan solusi dan layanan perangkat keras serta perangkat lunak tingkat operator yang inovatif. Yang membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang Anda butuhkan.</p>
         </div>
         </div>
         <div class="row">
@@ -52,7 +52,7 @@
                     <span class="badge badge-success" style="margin-left: 80%;">{{ $jobvacancy->status == 1 ? 'Opened' : 'Closed' }}</span>
                       <p><span class=""><img src="{{ asset('images/A72.png') }}" height="20%" width="30%" alt=""></span></p>
                     <h3>{{ ucwords($jobvacancy->name) }}</h3>
-                    <p>PT. Prospera Perwira Utama adalah sebuah perusahaan pengadaan alat-alat IT (information technology) yang bergerak di bidang Network Infrastructure...</p>
+                    <p>PT. Anugrah Distributor Indonesia adalah sebuah perusahaan care car dan cat semprot yang bergerak di bidang Network Infrastructure...</p>
                     <a href="{{ route('vacancy', $jobvacancy->slug)  }}" class="btn btn-warning btn-sm">Details</a>
                   </div>
                 </div>
@@ -92,10 +92,10 @@
       <div class="bg-img" style="background-image: url('http://www.prospera-perwira.com/img/about-img.jpg');"></div>
       <div class="text">
         <h3>Profile Prospera</h3>
-        <p>PT. Prospera Perwira Utama adalah perusahaan yang memberikan solusi di bidang Network Infrastructure melingkupi (Konvensional Server, Hyperconverge Server Storage, Storage, Firewall, Network Security, Netwowrk Monitoring, Switch, Computer) dan juga kami meberikan solusi di bidang piranti lunak (Sistem Aplikasi).</p>
-        <p>Kami telah berpengalaman lebih dari 5 tahun dalam mendistribusikan produk - produk kami yang berkualitas dan terjamin.</p>
+        <p>PT. Anugrah Distributor Indonesia adalah perusahaan yang memberikan solusi di bidang care car dan cat semprot.</p>
+        {{-- <p>Kami telah berpengalaman lebih dari 5 tahun dalam mendistribusikan produk - produk kami yang berkualitas dan terjamin.</p>
         <p>Kami juga telah berpengalaman dalam bekerja sama dengan HP, DELL, LENOVO, ASUS, Nutanix, CITRIX, PALO ALTO, JUPITER, BLUE CODE, Mellanox, ARRISTA, dll.</p>
-        <p>Kami berkomitmen untuk membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang dibutuhkan.</p>
+        <p>Kami berkomitmen untuk membantu bisnis sepenuhnya mewujudkan janji teknologi dan membantu memaksimalkan nilai teknologi yang dibutuhkan.</p> --}}
 
 
         <div class="mt-5">

@@ -22,7 +22,7 @@
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Telepon</th>
-                        <th>Status Pernikahan</th>
+                        <th>Jenis Kelamin</th>
                         <th>Agama</th>
                         <th>Email</th>
                         <th>Kirim Surat Panggilan</th>
@@ -33,7 +33,10 @@
                         <tr>
                                 <form action="{{ route('send.email.qualification') }}" method="post">
                                         @csrf
+                                <input type="hidden" name="job" id="" hidden value="{{$applicant->job_vacancy->id}}">
                                 <input type="hidden" name="job_vacancy" id="" hidden value="{{$applicant->job_vacancy->interviewdate}}">
+                                <input type="hidden" name="job_time" id="" hidden value="{{$applicant->job_vacancy->interviewtime}}">
+                                <input type="hidden" name="username" id="" hidden value="{{$applicant->user_id}}">
                                 <input type="hidden" name="posisi" id="" hidden value="{{$applicant->job_vacancy->name}}">
                                 <td> <input type="hidden" name="name" id="" hidden value="{{$applicant->name}}"> {{ $applicant->name }} </td>
                                 <td> {{ $applicant->date_of_birth->format('d-m-Y') }} </td>

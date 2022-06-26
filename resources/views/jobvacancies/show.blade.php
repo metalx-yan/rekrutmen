@@ -22,7 +22,7 @@
         
             <div class="card bg-light mb-3" style="max-width: 100%;">
                 <br>
-                    <img src="http://www.prospera-perwira.com/img/logo_prospera.png" height="35%" width="35%" style="margin-left:20px;" alt="">
+                    <img src="{{ asset('images/A72.png') }}" height="10%" width="20%" style="margin-left:20px;" alt="">
                     <div class="row">
                         <span style="font-size: 200%; font-weight: bold; margin-left: 25%; margin-top:3%; margin-bottom:2%;">Lowongan Pekerjaan</span>
                         

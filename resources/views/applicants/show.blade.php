@@ -17,11 +17,12 @@
                
             </div>
             <div class="card-body">
-                    <form action=" {{ route('assessment.store') }} " method="post">
+                    <form action="{{ route('updateco', $app->id) }}" method="post">
+                            @method('PUT')
                             @csrf
                             <div class="row">
                                 <input type="hidden" name="applicant_id" value="{{ $app->id }}">
-                                <input type="hidden" name="id" value="{{ $hsl }}">
+                                {{-- <input type="hidden" name="id" value="{{ $hsl }}"> --}}
                                 <div class="form-group col-md-4">
                                     <label>Nilai Interview</label>
                                     <input type="number" max="100" value="{{ old('interview') }}" name="interview" class="form-control {{ $errors->has('interview') ? 'is-invalid' : ''}}" id="interview" autocomplete="off" required>
@@ -29,8 +30,8 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Nilai Tertulis</label>
-                                    <input type="number" max="100" value="{{ $sq[0]->written }}" disabled name="" class="form-control {{ $errors->has('written') ? 'is-invalid' : ''}}" id="written" autocomplete="off" required>
-                                    <input type="hidden" max="100" value="{{ $sq[0]->written }}" disabled name="written" class="form-control {{ $errors->has('written') ? 'is-invalid' : ''}}" id="written" autocomplete="off">
+                                    <input type="number" max="100" value="{{ $sq }}" disabled name="" class="form-control {{ $errors->has('written') ? 'is-invalid' : ''}}" id="written" autocomplete="off" required>
+                                    <input type="hidden" max="100" value="{{ $sq }}" disabled name="written" class="form-control {{ $errors->has('written') ? 'is-invalid' : ''}}" id="written" autocomplete="off">
                                     {!! $errors->first('written', '<span class="invalid-feedback">:message</span>') !!}
                                 </div>
                                 <div class="form-group col-md-4">

@@ -22,7 +22,7 @@
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Telepon</th>
-                        <th>Status Pernikahan</th>
+                        <th>Jenis Kelamin</th>
                         <th>Agama</th>
                         <th>Email</th>
                         <th>Nilai</th>
@@ -39,11 +39,12 @@
                                 <td> {{ $applicant->gender == 0 ? 'Laki-Laki' : 'Perempuan' }}</td>
                                 <td> {{ $applicant->religion }} </td>
                                 <td> {{ $applicant->email }} </td>
-                                <td> {{ is_null($applicant->assessment->interview) ? '' : $applicant->assessment->total }} </td>
+                                <td> {{ is_null($applicant->assessment) ? '' : $applicant->assessment->total }} </td>
                                 {{-- <td> {{ $applicant->assessment->total != null ?  $applicant->assessment->total : ''}} </td> --}}
-                                <td> @if (is_null($applicant->assessment->interview))
-                                        <a href="{{ route('list.app', $applicant->id) }}" class="btn btn-primary btn-sm">Enter</a>
+                                <td> @if (isset($applicant->assessment->written))
+                                        <a href="{{ route('list.app', $applicant->id) }}" class="btn btn-danger btn-sm">Enter</a>
                                     @else
+                                        {{-- <a href="{{ route('list.app', $applicant->id) }}" class="btn btn-primary btn-sm">Enter</a> --}}
                                         
                                     @endif
                                 </td>

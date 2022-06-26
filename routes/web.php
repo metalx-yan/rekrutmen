@@ -17,6 +17,7 @@ Route::get('applicant/download/{id}', 'ApplicantController@download')->name('app
 Route::post('/applicant/user', 'ApplicantController@storeUser')->name('store.user');
 
 Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function() {
+    Route::put('list/applic/{id}', 'ApplicantController@updateC')->name('updateco');
 
     Route::resource('psikotest', 'PsikotestController');
 
@@ -61,6 +62,9 @@ Route::group(['prefix' => 'hrd', 'middleware' => ['auth', 'role:hrd']], function
     Route::post('/send-email', 'ApplicantController@sendEmail')->name('send.email');
         
     Route::get('list/applicants', 'ApplicantController@list')->name('list');
+    
+    // Route::put('list/applicants', 'ApplicantController@list')->name('list');
+
     
     Route::get('list/applicants/all', 'ApplicantController@listAll')->name('listall');
     

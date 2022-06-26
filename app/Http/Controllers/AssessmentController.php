@@ -35,28 +35,7 @@ class AssessmentController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->id);
-        // dd(($request->interview + $request->written)/2);
-        // $request->validate([
-        //     'interview' => 'required',
-        //     'written' => 'required',
-        //     'applicant_id' => 'required',
-        // ]);
-        
-        $sum = ($request->interview + $request->written)/2;
 
-        $update = Assessment::findOrFail($request->id);
-        $update->interview = $request->interview;
-        $update->total = $sum;
-        $update->created_at = Carbon::now();
-        $update->save();
-
-        // Assessment::create([
-        //     'interview' => $request->interview,
-        //     'total' => $sum,
-        //     'applicant_id' => $request->applicant_id,
-        // ]);
-        return redirect()->route('list');
 
     }
 
@@ -91,7 +70,9 @@ class AssessmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($id);
+
+       
     }
 
     /**

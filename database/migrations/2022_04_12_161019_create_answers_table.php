@@ -23,7 +23,7 @@ class CreateAnswersTable extends Migration
         Schema::table('answers', function (Blueprint $table) {
             $table->unsignedBigInteger('psikotest_id');
 
-            $table->foreign('psikotest_id')->references('id')->on('psikotests');
+            $table->foreign('psikotest_id')->references('id')->on('psikotests')->onDelete('cascade');
         });
     }
 

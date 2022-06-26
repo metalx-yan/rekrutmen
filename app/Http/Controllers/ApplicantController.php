@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use App\Assessment;
+use App\JobVacancy;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -97,6 +98,21 @@ class ApplicantController extends Controller
         
     }
 
+    public function updateC(Request $request, $id)
+    {
+        $sum = ($request->interview + $request->written)/2;
+        // dd($request->all(), $sum, $request->interview);
+        
+        $update = Assessment::where('applicant_id', $id)->first();
+        // dd($update);
+        $update->interview = $request->interview;
+        $update->total = $sum;
+        $update->created_at = Carbon::now();
+        $update->save();
+
+        return redirect()->route('list');
+    }
+    
     public function sendEmail(Request $request)
     {
         // dd($request->all());
@@ -122,12 +138,20 @@ class ApplicantController extends Controller
     {
         // dd($request->all());
         // dd(Carbon::parse($request->job_vacancy)->format('d F Y'));
+        $user_name = User::find($request->username);
+        // dd($request->all(), $user_name->username);
+        $psiko = DB::select("SELECT distinct c.start, c.end from job_vacancies a join psikotest_jobvacancy b on a.id = b.job_vacancy_id join psikotests c on b.psikotest_id = c.id where a.id = $request->job");
+        // dd($psiko[0]->start);
         $email = $request->email;
         $data = array(
                 'name' => $request->name,
                 'total' => $request->total,
                 'job_vacancy' => Carbon::parse($request->job_vacancy)->format('d F Y'),
-                'posisi' => $request->posisi
+                'job_time' => Carbon::parse($request->job_time)->format('d F Y'),
+                'posisi' => $request->posisi,
+                'username' => $user_name->username,
+                'start_psiko' => $psiko[0]->start,
+                'end_psiko' => $psiko[0]->end,
             );
         // Kirim Email
         Mail::send('email_template_qualification', $data, function($mail) use($email) {
@@ -145,7 +169,7 @@ class ApplicantController extends Controller
     public function list()
     {
         $applicants = Applicant::all();
-
+        // dd(isset($applicants[1]->assessment));
         return view('applicants.list', compact('applicants'));
     }
 
@@ -159,10 +183,22 @@ class ApplicantController extends Controller
     public function listApp($id)
     {
         $app = Applicant::find($id);
+        // dd($app);
         $ass = Assessment::where('applicant_id', $id)->get();
-        $hsl = $ass[0]->id;
-        $sq = DB::table('assessments')->select('written')->join('applicants','assessments.applicant_id','=','applicants.id')->get();
-        // dd($sq[0]->written);        
+        // $hsl = isset($hsl) ? $ass[0]->id : '';
+        if (count($ass) == 0) {
+            $hsl = 0;
+        } else {
+            $hsl = $ass[0]->written;
+        }
+        // $hsl = $ass[0]->id;
+        $sq = DB::table('assessments')->select('written')->join('applicants','assessments.applicant_id','=','applicants.id')->where('applicants.id', $id)->get();
+        if (count($sq) == 0) {
+            $sq = 0;
+        } else {
+            $sq = $sq[0]->written;
+        }
+        // dd($app->id);
         return view('applicants.show', compact('app','sq','hsl'));
     }
 

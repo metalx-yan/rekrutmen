@@ -22,7 +22,7 @@
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Telepon</th>
-                        <th>Status Pernikahan</th>
+                        <th>Jenis Kelamin</th>
                         <th>Agama</th>
                         <th>Email</th>
                         <th>Nilai</th>

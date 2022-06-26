@@ -18,10 +18,10 @@
 memenuhi kriteria perusahaan kami, maka dengan ini mengharapkan kehadiran Saudara untuk
 bergabung di perusahaan kami pada:</div>
 <p>
-    &nbsp;&nbsp;&nbsp; Tanggal : Senin, 25 Januari 2020 <p>
+    &nbsp;&nbsp;&nbsp; Tanggal : Senin, 1 Juli 2022 <p>
     &nbsp;&nbsp;&nbsp; Waktu   : 09.00 s/d Selesai<p>
-    &nbsp;&nbsp;&nbsp; Tempat  : Kantor Pusat PT. Prospera Perwira Utama, Crown Green Lake City, Blk. H
-    No.16, RT.004/RW.008, Petir, Kec. Cipondoh, Kota Tangerang, Banten
+    &nbsp;&nbsp;&nbsp; Tempat  : Kantor Pusat PT. Anugrah Distributor Indonesia, Jalan Prabu Kian Santang
+    Kec. Periuk, Kota Tangerang, Banten
     15140 <p>
             Demikian pemberitahuan dari kami. Atas kehadiran Saudara, kami ucapkan terimakasih.
             Selamat bergabung di perusahaan kami!

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Applicant;
 use Illuminate\Http\Request;
 use App\JobVacancy;
+use App\Answer;
 use App\Psikotest;
 use Illuminate\Support\Facades\DB;
 class PsikotestController extends Controller
@@ -17,12 +19,13 @@ class PsikotestController extends Controller
     {
         $job = JobVacancy::all();
         $soal = Psikotest::all();
+        // dd($soal);
         $data = DB::table('psikotests')->select('psikotests.start','psikotests.end','psikotest_jobvacancy.job_vacancy_id','job_vacancies.name')->join('psikotest_jobvacancy', 'psikotests.id', '=', 'psikotest_jobvacancy.psikotest_id')->join('job_vacancies', 'psikotest_jobvacancy.job_vacancy_id', '=', 'job_vacancies.id')->distinct()->get();
         $vacancy = [];
         foreach ($data as $job_vacancy) {
             $vacancy[] = $job_vacancy->job_vacancy_id;
         }
-        // dd(in_array(1,$vacancy));
+        // dd($job);
         return view('psikotests.index', compact('job','data','vacancy'));
     }
 
@@ -113,16 +116,28 @@ class PsikotestController extends Controller
 
     public function soal()
     {
-        $soal = Psikotest::all();
-        // dd($soal);
-        // $sa = DB::select('SELECT count(*) as result from answers a
-        // join psikotests b
-        // on a.psikotest_id = b.id
-        // join users c
-        // on a.user_id = c.id
-        // where a.result = b.answer_correct');
-        // dd($sa[0]->result);
+        $app = Applicant::all();
+        $answer = Answer::all();
 
-        return view('psikotests.soal', compact('soal'));
+        $soal = DB::select('SELECT distinct a.*,b.job_vacancy_id,d.id as user_id from psikotests a
+        join psikotest_jobvacancy b
+        on a.id = b.psikotest_id
+        join applicants c
+        on b.job_vacancy_id = c.job_vacancy_id
+        join users d
+        on c.user_id = d.id');
+
+        $as = [];
+        foreach ($app as $value) {
+            $as[] = $value->job_vacancy_id;
+        }
+
+        $answers = [];
+        foreach ($answer as $ans) {
+            $answers[] = $ans->user_id;
+        }
+        // dd($answers);
+
+        return view('psikotests.soal', compact('soal','as','answers'));
     }
 }

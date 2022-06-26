@@ -21,7 +21,46 @@
             <div class="card-body">
                 <form action="{{ route('answer.store') }}" method="post">
                     @csrf
-                @php
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($soal as $item)
+                        @if ($item->user_id == Auth::user()->id)
+                        @php
+                            $a= 'active';
+                        @endphp
+                    @if((Carbon\Carbon::now()->format('Y-m-d') >= $item->start) && (Carbon\Carbon::now()->format('Y-m-d') <= $item->end))
+                            @php
+                                $a= 'active';
+                            @endphp
+                                @if (in_array(Auth::user()->id, $answers))
+                                    @php
+                                        $a= 'active';
+                                    @endphp
+                                @else
+                                    <span>{{ $no++ }}. {{ ucfirst($item->question) }} : </span><br>
+                                    <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_a }}_{{ $item->id }}"> {{ $item->answer_a }}
+                                    <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_b }}_{{ $item->id }}"> {{ $item->answer_b }}
+                                    <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_c }}_{{ $item->id }}"> {{ $item->answer_c }}
+                                    <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_d }}_{{ $item->id }}"> {{ $item->answer_d }}
+                                    <input type="hidden" name="user" value="{{ Auth::user()->id }}">
+                                    {{-- <input type="hidden" name="job" value="{{ $item->jobvacancies[0] }}"> --}}
+                                    <br>
+                                    <hr>
+                                    @php
+                                        $a= 'non';
+                                    @endphp
+                                    
+                                @endif
+                            @endif
+                            
+                        @else
+                            @php
+                                $a= 'active';
+                            @endphp
+                        @endif
+                    @endforeach
+                {{-- @php
                     $no = 1;
                     $arr = [];
                 @endphp
@@ -31,9 +70,9 @@
                         @php
                             $arr[] = $id_u->user_id;
                         @endphp
-                    @endforeach
+                    @endforeach --}}
                     {{-- <span>{{ $item->answers. '-' . Auth::user()->id. '-' . in_array(Auth::user()->id, $arr) }}</span> --}}
-                    @if (in_array(Auth::user()->id, $arr))
+                    {{-- @if (in_array(Auth::user()->id, $arr))
                     @php
                         $a= 'active';
                     @endphp
@@ -43,22 +82,22 @@
                         <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_b }}_{{ $item->id }}"> {{ $item->answer_b }}
                         <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_c }}_{{ $item->id }}"> {{ $item->answer_c }}
                         <input type="radio" id="html" name="answer_{{ $item->id }}" value="{{ $item->answer_d }}_{{ $item->id }}"> {{ $item->answer_d }}
-                        <input type="hidden" name="user" value="{{ Auth::user()->id }}">
-                        <input type="hidden" name="job" value="{{ $item->jobvacancies[0] }}">
-                        <br>
+                        <input type="hidden" name="user" value="{{ Auth::user()->id }}"> --}}
+                        {{-- <input type="hidden" name="job" value="{{ $item->jobvacancies[0] }}"> --}}
+                        {{-- <br>
                         <hr>
                         @php
                             $a= 'non';
                         @endphp
                     @endif
                   
-                @endforeach
+                @endforeach --}}
 
-                 @if ($a == 'active')
-                     
-                 @else
-                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                     
+                @if ($a == 'active')
+                
+                @else
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                 
                  @endif
                 </form>
             </div>

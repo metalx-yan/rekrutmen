@@ -49,13 +49,14 @@
                                                 <option value="">Pilih Lowongan</option>
                                                 @foreach ($job as $job)
                                                     @if (in_array($job->id,$vacancy))
+
                                                     @else
                                                     <option value="{{ $job->id }}">{{ $job->name }}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
                                             {!! $errors->first('lowongan', '<span class="invalid-feedback">:message</span>') !!}
-                                        </div>P
+                                        </div>
                                     </div>
                                     <input type="button" value="+" onclick="addRow()" required>
                                     <div id="content">
